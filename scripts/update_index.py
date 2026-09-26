@@ -13,6 +13,12 @@
   4. fork: true → Fork 组
   5. 都没命中 → 未分类组（该组没有仓库时不输出这一节）
 
+说明列优先级（由高到低，与 repos.toml 头部注释保持一致）：
+  1. repos.toml 的 [descriptions] 表里该仓库的覆盖说明（可选表，用来只改索引页措辞）
+  2. 仓库自身的 description 原文
+  3. 都没有 → —
+  fork 仓库无论走哪一条，都会在说明末尾追加「上游 xxx 的 fork」链接。
+
 用法：
   python scripts/update_index.py                      # 调 GitHub API，写 README.md
   python scripts/update_index.py --dry-run            # 只打印生成结果，不写文件
@@ -138,10 +144,13 @@ def fill_fork_parent(repos: list[dict], headers: dict[str, str]) -> None:
 # ---------------------------------------------------------------------------
 
 
-def load_config(path: Path) -> tuple[list[dict], dict[str, str], set[str]]:
-    """读 repos.toml，返回（组列表、显式映射、排除名单）。
+def load_config(
+    path: Path,
+) -> tuple[list[dict], dict[str, str], set[str], dict[str, str]]:
+    """读 repos.toml，返回（组列表、显式映射、排除名单、说明覆盖表）。
 
     组列表已按显示顺序排好：groups 数组顺序 + uncategorized 强制最后。
+    说明覆盖表（[descriptions]）是可选的：表不存在时返回空字典。
     """
     with path.open("rb") as fp:
         config = tomllib.load(fp)
@@ -172,7 +181,16 @@ def load_config(path: Path) -> tuple[list[dict], dict[str, str], set[str]]:
             raise SystemExit(f"{path} 的 [repos] 里 {name} 指向不存在的组 {gid!r}")
 
     exclude = {str(item) for item in (config.get("exclude") or [])}
-    return groups, repos_map, exclude
+
+    # [descriptions] 可选：仓库名 = 自定义说明；值必须是字符串，空串视为没写
+    descriptions: dict[str, str] = {}
+    for name, text in (config.get("descriptions") or {}).items():
+        if not isinstance(text, str):
+            raise SystemExit(f"{path} 的 [descriptions] 里 {name} 的值必须是字符串")
+        if text.strip():
+            descriptions[name] = text
+
+    return groups, repos_map, exclude, descriptions
 
 
 # ---------------------------------------------------------------------------
@@ -206,19 +224,35 @@ def group_of(repo: dict, repos_map: dict[str, str], group_ids: list[str]) -> str
     return FALLBACK_GROUP
 
 
-def describe(repo: dict) -> str:
-    """生成「说明」列：仓库 description（为空写 —），fork 追加上游链接。"""
-    desc = (repo.get("description") or "").strip()
+def fork_suffix(repo: dict) -> str:
+    """fork 仓库追加的「上游 xxx 的 fork」链接；不是 fork 或拿不到上游时返回空串。"""
     parent = repo.get("parent") or {}
-    if repo.get("fork") and parent.get("full_name"):
-        full_name = parent["full_name"]
-        url = parent.get("html_url") or f"https://github.com/{full_name}"
-        upstream = f"上游 [{full_name}]({url}) 的 fork"
-        return f"{desc}；{upstream}" if desc else upstream
+    if not repo.get("fork") or not parent.get("full_name"):
+        return ""
+    full_name = parent["full_name"]
+    url = parent.get("html_url") or f"https://github.com/{full_name}"
+    return f"上游 [{full_name}]({url}) 的 fork"
+
+
+def describe(repo: dict, descriptions: dict[str, str]) -> str:
+    """生成「说明」列：按优先级取说明文字，fork 再追加上游链接。
+
+    优先级：repos.toml 的 [descriptions] 覆盖 > 仓库 description 原文 > —。
+    """
+    override = (descriptions.get(repo.get("name") or "") or "").strip()
+    desc = override or (repo.get("description") or "").strip()
+    suffix = fork_suffix(repo)
+    if suffix:
+        return f"{desc}；{suffix}" if desc else suffix
     return desc or "—"
 
 
-def render_block(groups: list[dict], buckets: dict[str, list[dict]], today: str) -> str:
+def render_block(
+    groups: list[dict],
+    buckets: dict[str, list[dict]],
+    today: str,
+    descriptions: dict[str, str],
+) -> str:
     """渲染自动区块：首行最后更新时间 + 每组标题/说明/两列表格。"""
     lines = [f"最后更新：{today}", ""]
     for group in groups:
@@ -234,7 +268,8 @@ def render_block(groups: list[dict], buckets: dict[str, list[dict]], today: str)
         lines.append("| 仓库 | 说明 |")
         lines.append("|---|---|")
         for repo in items:
-            lines.append(f"| [{repo['name']}]({repo['html_url']}) | {describe(repo)} |")
+            note = describe(repo, descriptions)
+            lines.append(f"| [{repo['name']}]({repo['html_url']}) | {note} |")
         lines.append("")
     # 结尾留一个换行：写入后 <!-- AUTO:END --> 前面会有一行空行，源码更清爽
     return "\n".join(lines).rstrip("\n") + "\n"
@@ -268,7 +303,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    groups, repos_map, exclude = load_config(CONFIG_PATH)
+    groups, repos_map, exclude, descriptions = load_config(CONFIG_PATH)
     group_ids = [group["id"] for group in groups]
 
     if args.repos_json:
@@ -299,7 +334,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"[group] {gid}: {names}", file=sys.stderr)
 
     today = datetime.now(shanghai_tz()).strftime("%Y-%m-%d")
-    block = render_block(groups, buckets, today)
+    block = render_block(groups, buckets, today, descriptions)
 
     old_text = README_PATH.read_text(encoding="utf-8")
     new_text = splice(old_text, block)
