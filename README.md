@@ -32,7 +32,7 @@ DeepSeek Harness(DSH)的宿主插件与 Web 客户端插件。
 |---|---|
 | [crafting-calculator](https://github.com/liuyun847/crafting-calculator) | 自动化建造游戏通用合成计算器，支持多游戏配方、生产链计算和路径对比 |
 | [divination](https://github.com/liuyun847/divination) | 三枚铜钱法起卦 CLI 工具，结合 AI 进行解卦 |
-| [text2video](https://github.com/liuyun847/text2video) | — |
+| [text2video](https://github.com/liuyun847/text2video) | 文案转视频：edge-tts 配音 + 滚动字幕 + ffmpeg 合成 |
 | [vision-cli](https://github.com/liuyun847/vision-cli) | 图片分析命令行工具，可以作为 Skill 使用，使纯文本模型能够理解图片 |
 | [vlm-gui-tools](https://github.com/liuyun847/vlm-gui-tools) | 为视觉语言模型(VLM)提供屏幕截图网格标注和鼠标点击控制的SKILL |
 
