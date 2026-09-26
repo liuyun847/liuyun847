@@ -1,0 +1,58 @@
+# 仓库索引自动更新：定时拉取账号下的仓库列表 → 按 repos.toml 分组 → 重写 README 自动区块 → 提交
+name: update-index
+
+on:
+  # 每天一次；用 UTC 非整点（03:17 UTC = 北京时间 11:17），避开整点排队高峰。
+  # 注意 GitHub 的 schedule 只保证「大致准时」，负载高时可能延迟几分钟到几十分钟。
+  schedule:
+    - cron: "17 3 * * *"
+  # 手动触发（Actions 页面 Run workflow，或 gh workflow run update-index.yml）
+  workflow_dispatch:
+  # 改了分组配置 / 脚本 / 本文件时立即跑一次；自动提交只动 README.md，不会递归触发
+  push:
+    paths:
+      - repos.toml
+      - scripts/**
+      - .github/workflows/update-index.yml
+
+# 提交需要写权限；仓库 Settings → Actions → General 若把默认权限设成 read-only，
+# 这里显式声明 contents: write 依然有效（除非被组织策略锁死）
+permissions:
+  contents: write
+
+# 同一时间只跑一个，避免两个 run 同时改 README 造成 push 冲突
+concurrency:
+  group: update-index
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v7
+
+      - name: 安装 Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: 生成 README 自动区块
+        # 脚本只用标准库；GITHUB_TOKEN 只用来提高 API 限额，没有也能匿名跑（60 次/小时）
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/update_index.py
+
+      - name: 提交并推送（没有变化就不提交）
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- README.md; then
+            echo "README.md 无变化，跳过提交"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "chore: 自动更新仓库索引"
+          # 用 HEAD:<分支> 推送，schedule/手动触发下都能落到当前分支
+          git push origin "HEAD:${GITHUB_REF_NAME}"
