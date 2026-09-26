@@ -15,8 +15,14 @@
 # 怎么改某个仓库的归属：改 [repos] 表里它后面的组 id 即可（显式映射优先级最高）。
 # 注意 dsh- 开头的仓库默认会进「DSH 插件」组，要挪到别的组必须靠 [repos] 显式指定。
 #
+# 怎么只改索引页里的说明措辞：在文件末尾的 [descriptions] 表里写 `仓库名 = "自定义说明"`。
+# 这是可选的覆盖表，表不存在或没有该仓库时，说明列仍取 GitHub 上的 description 原文。
+#
 # 分组优先级（由 scripts/update_index.py 实现）：
 #   [repos] 显式映射 > 仓库 topics 命中组 id > 仓库名以 dsh- 开头 > fork > 未分类
+#
+# 说明列优先级（同样由 scripts/update_index.py 实现）：
+#   [descriptions] 覆盖 > 仓库 description 原文 > —
 # =============================================================================
 
 # 不参与索引的仓库（索引页自身不该出现在自己的清单里）。
@@ -73,3 +79,8 @@ demo = "learning"
 learn = "learning"
 
 ok-wuthering-waves = "fork"
+
+# 可选的说明覆盖表：仓库名 = "自定义说明"，只影响 README 里的说明列，不改 GitHub 仓库设置。
+# 留空或整张表删掉都行；写法示例（取消注释即生效）：
+# text2video = "自定义说明（不写就用 GitHub 上的描述原文）"
+[descriptions]
