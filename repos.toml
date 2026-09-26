@@ -1,0 +1,75 @@
+# =============================================================================
+# liuyun847/liuyun847 仓库索引 —— 分组配置（人工维护）
+#
+# 本文件决定 README.md 自动区块里「有哪些组、按什么顺序显示、谁进哪个组」。
+# 改完提交即可，GitHub Actions 会重新生成 README（见 .github/workflows/update-index.yml）。
+#
+# 怎么加一个新组：按期望的显示顺序补一个 [[groups]] 块，例如
+#     [[groups]]
+#     id    = "games"        # 英文标识，同时可以用作 topic 名
+#     title = "游戏"          # README 里的二级标题
+#     intro = "一句话说明"    # 可选：渲染在标题下方；不写就不显示
+#   然后把仓库归到它下面：在 [repos] 里写 `仓库名 = "games"`，
+#   或者直接给那个仓库打上同名 topic（GitHub 仓库页 About → Topics）。
+#
+# 怎么改某个仓库的归属：改 [repos] 表里它后面的组 id 即可（显式映射优先级最高）。
+# 注意 dsh- 开头的仓库默认会进「DSH 插件」组，要挪到别的组必须靠 [repos] 显式指定。
+#
+# 分组优先级（由 scripts/update_index.py 实现）：
+#   [repos] 显式映射 > 仓库 topics 命中组 id > 仓库名以 dsh- 开头 > fork > 未分类
+# =============================================================================
+
+# 不参与索引的仓库（索引页自身不该出现在自己的清单里）。
+# 写仓库名或 owner/name 全名都可以。
+exclude = ["liuyun847"]
+
+# 组的显示顺序 = 这里的数组顺序；uncategorized 组会被强制排到最后。
+[[groups]]
+id = "dsh-plugin"
+title = "DSH 插件"
+intro = "DeepSeek Harness(DSH)的宿主插件与 Web 客户端插件。"
+
+[[groups]]
+id = "dsh-experiment"
+title = "DSH 实验"
+
+[[groups]]
+id = "tools"
+title = "工具与项目"
+
+[[groups]]
+id = "learning"
+title = "学习与示例"
+
+[[groups]]
+id = "fork"
+title = "Fork"
+
+# 兜底组：没被上面任何规则命中的仓库都落这里；该组没有仓库时 README 里不输出这一节。
+[[groups]]
+id = "uncategorized"
+title = "未分类"
+intro = "还没归类的仓库，补进 repos.toml 或给它打个 topic 即可归类。"
+
+# 显式映射：仓库名 = 组 id（优先级最高，用来纠正 dsh- 前缀这类粗规则的误判）
+[repos]
+dsh-llm-auto = "dsh-plugin"
+dsh-host-restart = "dsh-plugin"
+dsh-host-compliance-check = "dsh-plugin"
+dsh-client-ui-session-rail = "dsh-plugin"
+dsh-client-ui-peak-valley = "dsh-plugin"
+dsh-client-ui-turn-chime = "dsh-plugin"
+
+# 名字带 dsh- 但不是插件，必须显式指定，否则会被前缀规则拉进「DSH 插件」
+dsh-warmup-anchoring = "dsh-experiment"
+
+crafting-calculator = "tools"
+text2video = "tools"
+vision-cli = "tools"
+vlm-gui-tools = "tools"
+divination = "tools"
+
+demo = "learning"
+learn = "learning"
+
+ok-wuthering-waves = "fork"
