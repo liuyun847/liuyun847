@@ -5,7 +5,7 @@ Repository index — plugins and tools.
 这里是 [liuyun847](https://github.com/liuyun847) 名下公开仓库的索引，按用途分组，方便查找。
 
 <!-- AUTO:START -->
-最后更新：2026-09-30
+最后更新：2026-10-01
 
 ## DSH 插件
 
