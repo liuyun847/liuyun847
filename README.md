@@ -26,12 +26,6 @@ DeepSeek Harness(DSH)的宿主插件与 Web 客户端插件。
 | [dsh-llm-auto](https://github.com/liuyun847/dsh-llm-auto) | DSH 宿主插件:注册 auto 模型,按有序回退链在多条 provider+model 间静默切换 (DeepSeek Harness) |
 | [dsh-skill-toggle](https://github.com/liuyun847/dsh-skill-toggle) | DSH 插件:按名单把技能从模型可见目录摘掉(模型目录/skill 工具/斜杠命令三处),带设置页开关 (DeepSeek Harness) |
 
-## DSH 实验
-
-| 仓库 | 说明 |
-|---|---|
-| [dsh-warmup-anchoring](https://github.com/liuyun847/dsh-warmup-anchoring) | DSH 预热轮锚定实验:剥离注入复现 DeepSeek V4 Pro We need 轨迹 (Windows/rc.6) |
-
 ## 工具与项目
 
 | 仓库 | 说明 |
