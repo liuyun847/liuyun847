@@ -5,7 +5,7 @@ Repository index — plugins and tools.
 这里是 [liuyun847](https://github.com/liuyun847) 名下公开仓库的索引，按用途分组，方便查找。
 
 <!-- AUTO:START -->
-最后更新：2026-10-10
+最后更新：2026-10-11
 
 ## DSH 插件
 
@@ -48,6 +48,14 @@ DeepSeek Harness(DSH)的宿主插件与 Web 客户端插件。
 | 仓库 | 说明 |
 |---|---|
 | [ok-wuthering-waves](https://github.com/liuyun847/ok-wuthering-waves) | 鸣潮 后台自动战斗 自动刷声骸 一键日常  Automation for Wuthering Waves；上游 [ok-oldking/ok-wuthering-waves](https://github.com/ok-oldking/ok-wuthering-waves) 的 fork |
+
+## 未分类
+
+还没归类的仓库，补进 repos.toml 或给它打个 topic 即可归类。
+
+| 仓库 | 说明 |
+|---|---|
+| [lambda-calculus](https://github.com/liuyun847/lambda-calculus) | — |
 
 <!-- AUTO:END -->
 
