@@ -61,15 +61,12 @@ intro = "还没归类的仓库，补进 repos.toml 或给它打个 topic 即可�
 [repos]
 dsh-llm-auto = "dsh-plugin"
 dsh-host-restart = "dsh-plugin"
-dsh-host-compliance-check = "dsh-plugin"
 dsh-client-ui-session-rail = "dsh-plugin"
 dsh-client-ui-peak-valley = "dsh-plugin"
 dsh-client-ui-turn-chime = "dsh-plugin"
 
-# 名字带 dsh- 但不是插件，必须显式指定，否则会被前缀规则拉进「DSH 插件」
-dsh-warmup-anchoring = "dsh-experiment"
-
 crafting-calculator = "tools"
+adaptive-reader = "tools"
 text2video = "tools"
 vision-cli = "tools"
 vlm-gui-tools = "tools"
