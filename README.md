@@ -5,7 +5,7 @@ Repository index — plugins and tools.
 这里是 [liuyun847](https://github.com/liuyun847) 名下公开仓库的索引，按用途分组，方便查找。
 
 <!-- AUTO:START -->
-最后更新：2026-10-18
+最后更新：2026-10-19
 
 ## DSH 插件
 
@@ -17,7 +17,6 @@ DeepSeek Harness(DSH)的宿主插件与 Web 客户端插件。
 | [dsh-client-ui-peak-valley](https://github.com/liuyun847/dsh-client-ui-peak-valley) | DSH Web 客户端插件:模型选择按钮左侧显示 DeepSeek API 峰/谷价状态(绿=谷,橙=峰) |
 | [dsh-client-ui-session-rail](https://github.com/liuyun847/dsh-client-ui-session-rail) | DSH Web 客户端插件:侧边栏收起时在左侧空白区竖排显示活跃会话横条 (DeepSeek Harness) |
 | [dsh-client-ui-turn-chime](https://github.com/liuyun847/dsh-client-ui-turn-chime) | DSH Web 客户端插件:AI 回复完成时播放双音提示音 (DeepSeek Harness) |
-| [dsh-host-compliance-check](https://github.com/liuyun847/dsh-host-compliance-check) | DSH 宿主插件:轮末自动派发需求合规检查子智能体 (DeepSeek Harness) |
 | [dsh-host-goal-subagent-gate](https://github.com/liuyun847/dsh-host-goal-subagent-gate) | DSH 宿主插件:有在飞子代理时压住 goal 自动续轮,避免空转烧额度 (DeepSeek Harness) |
 | [dsh-host-restart](https://github.com/liuyun847/dsh-host-restart) | DSH 宿主插件:给模型一个 restart_dsh 工具,重启 dsh 后自动恢复原会话续跑 (DeepSeek Harness) |
 | [dsh-host-sl](https://github.com/liuyun847/dsh-host-sl) | DSH 宿主插件:活跃工作表+崩溃重启后冷恢复唤醒未完成会话并附断点,子代理接续结果回报父会话 (DeepSeek Harness) |
@@ -32,6 +31,7 @@ DeepSeek Harness(DSH)的宿主插件与 Web 客户端插件。
 |---|---|
 | [crafting-calculator](https://github.com/liuyun847/crafting-calculator) | 自动化建造游戏通用合成计算器，支持多游戏配方、生产链计算和路径对比 |
 | [divination](https://github.com/liuyun847/divination) | 三枚铜钱法起卦 CLI 工具，结合 AI 进行解卦 |
+| [lambda-calculus](https://github.com/liuyun847/lambda-calculus) | 零依赖的 Python λ 演算迷你语言：解析变量、抽象与应用，支持最左最外 β/η 归约，并附 Python 原生 lambda 对照演示。 |
 | [text2video](https://github.com/liuyun847/text2video) | 文案转视频：edge-tts 配音 + 滚动字幕 + ffmpeg 合成 |
 | [vision-cli](https://github.com/liuyun847/vision-cli) | 图片分析命令行工具，可以作为 Skill 使用，使纯文本模型能够理解图片 |
 | [vlm-gui-tools](https://github.com/liuyun847/vlm-gui-tools) | 为视觉语言模型(VLM)提供屏幕截图网格标注和鼠标点击控制的SKILL |
@@ -48,14 +48,6 @@ DeepSeek Harness(DSH)的宿主插件与 Web 客户端插件。
 | 仓库 | 说明 |
 |---|---|
 | [ok-wuthering-waves](https://github.com/liuyun847/ok-wuthering-waves) | 鸣潮 后台自动战斗 自动刷声骸 一键日常  Automation for Wuthering Waves；上游 [ok-oldking/ok-wuthering-waves](https://github.com/ok-oldking/ok-wuthering-waves) 的 fork |
-
-## 未分类
-
-还没归类的仓库，补进 repos.toml 或给它打个 topic 即可归类。
-
-| 仓库 | 说明 |
-|---|---|
-| [lambda-calculus](https://github.com/liuyun847/lambda-calculus) | — |
 
 <!-- AUTO:END -->
 
