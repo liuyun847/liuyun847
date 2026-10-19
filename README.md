@@ -5,7 +5,7 @@ Repository index — plugins and tools.
 这里是 [liuyun847](https://github.com/liuyun847) 名下公开仓库的索引，按用途分组，方便查找。
 
 <!-- AUTO:START -->
-最后更新：2026-10-19
+最后更新：2026-10-20
 
 ## DSH 插件
 
@@ -14,9 +14,9 @@ DeepSeek Harness(DSH)的宿主插件与 Web 客户端插件。
 | 仓库 | 说明 |
 |---|---|
 | [dsh-agent-preset-coordinator](https://github.com/liuyun847/dsh-agent-preset-coordinator) | DSH 预设组合包:协调者预设 + project-coordination 技能与校验工具 (DeepSeek Harness) |
-| [dsh-client-ui-peak-valley](https://github.com/liuyun847/dsh-client-ui-peak-valley) | DSH Web 客户端插件:模型选择按钮左侧显示 DeepSeek API 峰/谷价状态(绿=谷,橙=峰) |
-| [dsh-client-ui-session-rail](https://github.com/liuyun847/dsh-client-ui-session-rail) | DSH Web 客户端插件:侧边栏收起时在左侧空白区竖排显示活跃会话横条 (DeepSeek Harness) |
-| [dsh-client-ui-turn-chime](https://github.com/liuyun847/dsh-client-ui-turn-chime) | DSH Web 客户端插件:AI 回复完成时播放双音提示音 (DeepSeek Harness) |
+| [dsh-client-ui-peak-valley](https://github.com/liuyun847/dsh-client-ui-peak-valley) | DSH 客户端插件:模型选择按钮左侧显示 DeepSeek API 峰/谷价状态(绿=谷,橙=峰) |
+| [dsh-client-ui-session-rail](https://github.com/liuyun847/dsh-client-ui-session-rail) | DSH 客户端插件:侧边栏收起时在左侧空白区竖排显示活跃会话横条 (DeepSeek Harness) |
+| [dsh-client-ui-turn-chime](https://github.com/liuyun847/dsh-client-ui-turn-chime) | DSH 客户端插件:AI 回复完成时播放双音提示音 (DeepSeek Harness) |
 | [dsh-host-goal-subagent-gate](https://github.com/liuyun847/dsh-host-goal-subagent-gate) | DSH 宿主插件:有在飞子代理时压住 goal 自动续轮,避免空转烧额度 (DeepSeek Harness) |
 | [dsh-host-restart](https://github.com/liuyun847/dsh-host-restart) | DSH 宿主插件:给模型一个 restart_dsh 工具,重启 dsh 后自动恢复原会话续跑 (DeepSeek Harness) |
 | [dsh-host-sl](https://github.com/liuyun847/dsh-host-sl) | DSH 宿主插件:活跃工作表+崩溃重启后冷恢复唤醒未完成会话并附断点,子代理接续结果回报父会话 (DeepSeek Harness) |
@@ -29,6 +29,7 @@ DeepSeek Harness(DSH)的宿主插件与 Web 客户端插件。
 
 | 仓库 | 说明 |
 |---|---|
+| [adaptive-reader](https://github.com/liuyun847/adaptive-reader) | 阅读文本自适应重写工具：段锚点→概念清单→逐段改写→事实锚校验→阅读器（Python/uv） |
 | [crafting-calculator](https://github.com/liuyun847/crafting-calculator) | 自动化建造游戏通用合成计算器，支持多游戏配方、生产链计算和路径对比 |
 | [divination](https://github.com/liuyun847/divination) | 三枚铜钱法起卦 CLI 工具，结合 AI 进行解卦 |
 | [lambda-calculus](https://github.com/liuyun847/lambda-calculus) | 零依赖的 Python λ 演算迷你语言：解析变量、抽象与应用，支持最左最外 β/η 归约，并附 Python 原生 lambda 对照演示。 |
