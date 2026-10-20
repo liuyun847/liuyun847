@@ -18,6 +18,7 @@ DeepSeek Harness(DSH)的宿主插件与 Web 客户端插件。
 | [dsh-client-ui-session-rail](https://github.com/liuyun847/dsh-client-ui-session-rail) | DSH 客户端插件:侧边栏收起时在左侧空白区竖排显示活跃会话横条 (DeepSeek Harness) |
 | [dsh-client-ui-turn-chime](https://github.com/liuyun847/dsh-client-ui-turn-chime) | DSH 客户端插件:AI 回复完成时播放双音提示音 (DeepSeek Harness) |
 | [dsh-host-goal-subagent-gate](https://github.com/liuyun847/dsh-host-goal-subagent-gate) | DSH 宿主插件:有在飞子代理时压住 goal 自动续轮,避免空转烧额度 (DeepSeek Harness) |
+| [dsh-host-ptc-lazy](https://github.com/liuyun847/dsh-host-ptc-lazy) | DSH 宿主插件:把 ptc 会话系统提示词里的全量工具签名换成按组懒加载(签名注入对话尾部,不破缓存) |
 | [dsh-host-restart](https://github.com/liuyun847/dsh-host-restart) | DSH 宿主插件:给模型一个 restart_dsh 工具,重启 dsh 后自动恢复原会话续跑 (DeepSeek Harness) |
 | [dsh-host-sl](https://github.com/liuyun847/dsh-host-sl) | DSH 宿主插件:活跃工作表+崩溃重启后冷恢复唤醒未完成会话并附断点,子代理接续结果回报父会话 (DeepSeek Harness) |
 | [dsh-host-task-board](https://github.com/liuyun847/dsh-host-task-board) | DSH 宿主插件:协调者预设专用的共享任务板工具 task_board,落宿主领域存储跨重启存活 (DeepSeek Harness) |
