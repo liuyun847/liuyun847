@@ -5,7 +5,7 @@ Repository index — plugins and tools.
 这里是 [liuyun847](https://github.com/liuyun847) 名下公开仓库的索引，按用途分组，方便查找。
 
 <!-- AUTO:START -->
-最后更新：2026-10-21
+最后更新：2026-10-22
 
 ## DSH 插件
 
@@ -24,7 +24,7 @@ DeepSeek Harness(DSH)的宿主插件与 Web 客户端插件。
 | [dsh-host-task-board](https://github.com/liuyun847/dsh-host-task-board) | DSH 宿主插件:协调者预设专用的共享任务板工具 task_board,落宿主领域存储跨重启存活 (DeepSeek Harness) |
 | [dsh-host-tool-layering](https://github.com/liuyun847/dsh-host-tool-layering) | DSH 宿主插件:按前缀把整组工具从模型可见工具表摘掉,改由技能当说明书,省上下文 (DeepSeek Harness) |
 | [dsh-llm-auto](https://github.com/liuyun847/dsh-llm-auto) | DSH 宿主插件:注册 auto 模型,按有序回退链在多条 provider+model 间静默切换 (DeepSeek Harness) |
-| [dsh-skill-toggle](https://github.com/liuyun847/dsh-skill-toggle) | DSH 插件:按名单把技能从模型可见目录摘掉(模型目录/skill 工具/斜杠命令三处),带设置页开关 (DeepSeek Harness) |
+| [dsh-skill-toggle](https://github.com/liuyun847/dsh-skill-toggle) | DSH 插件:把名单里的技能标成模型不可调用(模型目录与 skill 工具看不到),用户 /名字 仍可用,带设置页开关 (DeepSeek Harness) |
 
 ## 工具与项目
 
