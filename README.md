@@ -5,7 +5,7 @@ Repository index — plugins and tools.
 这里是 [liuyun847](https://github.com/liuyun847) 名下公开仓库的索引，按用途分组，方便查找。
 
 <!-- AUTO:START -->
-最后更新：2026-11-16
+最后更新：2026-11-17
 
 ## DSH 插件
 
@@ -32,6 +32,7 @@ DeepSeek Harness(DSH)的宿主插件与 Web 客户端插件。
 |---|---|
 | [adaptive-reader](https://github.com/liuyun847/adaptive-reader) | 阅读文本自适应重写工具：段锚点→概念清单→逐段改写→事实锚校验→阅读器（Python/uv） |
 | [crafting-calculator](https://github.com/liuyun847/crafting-calculator) | 自动化建造游戏通用合成计算器，支持多游戏配方、生产链计算和路径对比 |
+| [deepseek-chat](https://github.com/liuyun847/deepseek-chat) | DeepSeek 安卓对话客户端（PWA + WebView 壳）：多端同步、APK 打包链、本机 Web 服务 |
 | [divination](https://github.com/liuyun847/divination) | 三枚铜钱法起卦 CLI 工具，结合 AI 进行解卦 |
 | [lambda-calculus](https://github.com/liuyun847/lambda-calculus) | 零依赖的 Python λ 演算迷你语言：解析变量、抽象与应用，支持最左最外 β/η 归约，并附 Python 原生 lambda 对照演示。 |
 | [text2video](https://github.com/liuyun847/text2video) | 文案转视频：edge-tts 配音 + 滚动字幕 + ffmpeg 合成 |
